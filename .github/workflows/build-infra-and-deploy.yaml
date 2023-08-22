@@ -37,6 +37,11 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.5.5
+    
+    - name: Empty S3 bucket
+      if: vars.TF_DESTROY == 'true'
+      run: |
+        aws s3 rm s3://${{ env.S3_BUCKET_NAME }} --recursive
 
     - name: Terraform Init
       run: terraform init
@@ -58,5 +63,6 @@ jobs:
       run: terraform apply -destroy -auto-approve
     
     - name: Sync files to S3 bucket
+      if: vars.TF_DESTROY == 'false'
       run: |
         aws s3 sync ../../static-site/ s3://${{ env.S3_BUCKET_NAME }} --delete
