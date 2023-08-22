@@ -1,4 +1,4 @@
-name: Deploy Infrastructure and Deply site
+name: Deploy Infrastructure and Deploy site
 
 on:
   push:
@@ -15,7 +15,7 @@ env:
   TF_WORKING_DIR: ./infrastructure/code
 jobs:
   terraform:
-    name: Terraform
+    name: Terraform and Sync Static Site Files
     runs-on: ubuntu-latest
     environment: production
     defaults:
