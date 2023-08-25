@@ -2,7 +2,7 @@
 
 This POC provisions the resources needed to run a static website on AWS S3. The primary objective of this POC is to automate the provisioning of resources using Terraform and GitHub actions.
 
-The static site is in the static-site folder. It is a [simple site template](https://codepen.io/suez/pen/rLGvxr) by [Nikolay Talanov](https://codepen.io/suez) downloaded from CodePen.
+The static site is in the static-site folder. It is a [simple site template](https://codepen.io/suez/pen/rLGvxr) by [Nikolay Talanov](https://codepen.io/suez) from CodePen.
 
 ## Architecture
 ![Architecture](./images/s3CloudFrontStaticWebsite.png)
@@ -152,6 +152,7 @@ Attach the same policy to the aws account you are using to run terraform locally
 ## Credits
 - [iamlive](https://github.com/iann0036/iamlive) by [Ian McKay](https://github.com/iann0036)
 - [Running iamlive in a docker container](https://meirg.co.il/2021/04/23/determining-aws-iam-policies-according-to-terraform-and-aws-cli/) by [Meir Gabay](https://meirg.co.il/about/)
+- [Static site](https://codepen.io/suez/pen/rLGvxr) by [Nikolay Talanov](https://codepen.io/suez) from CodePen.
 
 ## License
 
