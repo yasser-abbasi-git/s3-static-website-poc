@@ -38,8 +38,15 @@ jobs:
       with:
         terraform_version: 1.5.5
     
+    - name: Check S3 Bucket Exists
+      uses: tuler/s3-check-action@master
+      id: CheckS3BucketExists
+      env:
+        AWS_REGION: ${{ env.AWS_REGION }}
+        AWS_S3_BUCKET: ${{ env.S3_BUCKET_NAME }}
+
     - name: Empty S3 bucket
-      if: vars.TF_DESTROY == 'true'
+      if: vars.TF_DESTROY == 'true' && steps.CheckS3BucketExists.output.exists == 'true'
       run: |
         aws s3 rm s3://${{ env.S3_BUCKET_NAME }} --recursive
 
