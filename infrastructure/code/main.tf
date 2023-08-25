@@ -7,7 +7,7 @@ locals {
 module "s3" {
   source         = "./modules/s3"
   bucket_name    = var.bucket_name
-  cloudfront_arn = module.cloudfront.cloudfront_arn
+  cloudfront_arn = module.cloudfront.cloudfront_distribution_arn
 }
 
 # Create acm certificate
@@ -37,8 +37,8 @@ module "route53" {
   app_hosted_zone_domain    = local.app_hosted_zone_domain
   app_hosted_zone_name      = var.app_hosted_zone_name
   app_subdomain             = var.app_subdomain
-  cloudfront_domain_name    = module.cloudfront.cloudfront_domain_name
-  cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
+  cloudfront_domain_name    = module.cloudfront.cloudfront_distribution_domain_name
+  cloudfront_hosted_zone_id = module.cloudfront.cloudfront_distribution_hosted_zone_id
 }
 
 # Create Cloudfront distribution
@@ -47,4 +47,12 @@ module "cloudfront" {
   bucket_regional_domain_name = module.s3.bucket_regional_domain_name
   static_app_domain           = local.static_app_domain
   certificate_arn             = module.acm.acm_certificate_arn
+}
+
+# Create Cloudfront distribution
+module "lambda" {
+  source                     = "./modules/lambda"
+  cloudfront_distribution_id = module.cloudfront.cloudfront_distribution_id
+  bucket_id                  = module.s3.bucket_id
+  bucket_arn                 = module.s3.bucket_arn
 }
