@@ -1,7 +1,7 @@
 # Create Origin Access Control tpo access the S3 bucket from cloudfront
 resource "aws_cloudfront_origin_access_control" "s3" {
   name                              = "S3 OAC"
-  description                       = "S3 OAC"
+  description                       = "S3 Origin Access Control"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
@@ -48,5 +48,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       restriction_type = "none"
       locations        = []
     }
+  }
+
+  tags = {
+    Name = "${var.project_name}-cloudfront"
   }
 }

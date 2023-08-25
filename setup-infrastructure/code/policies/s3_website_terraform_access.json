@@ -30,6 +30,7 @@
                 "s3:PutBucketPolicy",
                 "s3:PutBucketNotification",
                 "s3:GetBucketNotification",
+                "s3:PutBucketTagging",
                 "dynamodb:PutItem",
                 "dynamodb:GetItem",
                 "dynamodb:DeleteItem",

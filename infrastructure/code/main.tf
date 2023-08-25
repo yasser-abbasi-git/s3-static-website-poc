@@ -6,6 +6,7 @@ locals {
 # create s3 buckets
 module "s3" {
   source         = "./modules/s3"
+  project_name   = var.project_name
   bucket_name    = var.bucket_name
   cloudfront_arn = module.cloudfront.cloudfront_distribution_arn
 }
@@ -44,6 +45,7 @@ module "route53" {
 # Create Cloudfront distribution
 module "cloudfront" {
   source                      = "./modules/cloudfront"
+  project_name                = var.project_name
   bucket_regional_domain_name = module.s3.bucket_regional_domain_name
   static_app_domain           = local.static_app_domain
   certificate_arn             = module.acm.acm_certificate_arn

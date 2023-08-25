@@ -1,5 +1,5 @@
 resource "aws_iam_role" "invalidate_cloudfront_cache" {
-  name  = "invalidate_cloudfront_cache"
+  name               = "invalidate_cloudfront_cache"
   assume_role_policy = file("${path.module}/policies/invalidate_cache_assume_role_policy.json")
 }
 
