@@ -65,7 +65,11 @@
                 "lambda:AddPermission",
                 "lambda:RemovePermission",
                 "lambda:GetPolicy",
-                "iam:PassRole"
+                "iam:PassRole",
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion",
+                "iam:ListPolicyVersions",
+                "iam:DeletePolicy"
             ],
             "Resource": "*"
         }
