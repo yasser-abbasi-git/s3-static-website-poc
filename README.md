@@ -30,7 +30,7 @@ The Terraform modules in this POC are:
 
 ## Setup
 ### AWS
-#### Open ID Connect and ECR Repository
+#### Open ID Connect
 This project uses OpenID Connect to talk to AWS. There is a Terraform module that does this for you but I had to remove it out of the main infrastructure code for this POC as it is a catch 22 if deploying through Github Actions! You need the integration there for the Github Actions Workflow to run and provision your infrastructure.
 
 Steps to setup:
