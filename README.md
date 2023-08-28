@@ -14,7 +14,7 @@ The Terraform modules in this POC are:
 
 - Cloudfront - Provisions the cloudfront distribution and sets up origin access control for s3.
 
-- Route 53 - Provisions the hosted zone for the application dns records and creates the dns records. Utilises the terraform-aws-modules/route53/aws//modules/records module
+- Route 53 - Uses a module hosted in another github repository to provisions the hosted zone for the application dns records and create the dns records.
 
 - Lambda - Provisions the IAM role and policy and attached the policy to the role for invalidating cloudfront cache. Also provisions the lambda function and sets up environment variable to hold the content distribution id that will be used by the lambda function.
 
