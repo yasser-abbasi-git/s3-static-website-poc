@@ -19,7 +19,7 @@ module "acm" {
     aws = aws.virginia
   }
   domain_name         = "*.${local.app_hosted_zone_domain}"
-  zone_id             = module.route53.app_hosted_zone_zone_id
+  zone_id             = module.route53.hosted_zone_zone_id
   wait_for_validation = true
 
   tags = {
@@ -33,13 +33,13 @@ module "acm" {
 
 # create hosted zone and dns records
 module "route53" {
-  source                    = "./modules/route53"
-  root_domain               = var.root_domain
-  app_hosted_zone_domain    = local.app_hosted_zone_domain
-  app_hosted_zone_name      = var.app_hosted_zone_name
-  app_subdomain             = var.app_subdomain
-  cloudfront_domain_name    = module.cloudfront.cloudfront_distribution_domain_name
-  cloudfront_hosted_zone_id = module.cloudfront.cloudfront_distribution_hosted_zone_id
+  source                     = "github.com/yasser-abbasi-git/tfmodule-hostedzone-and-dns"
+  root_domain                = var.root_domain
+  hosted_zone_domain         = local.app_hosted_zone_domain
+  hosted_zone_name           = var.app_hosted_zone_name
+  subdomain                  = var.app_subdomain
+  a_record_alias_domain_name = module.cloudfront.cloudfront_distribution_domain_name
+  a_record_alias_zone_id     = module.cloudfront.cloudfront_distribution_hosted_zone_id
 }
 
 # Create Cloudfront distribution
