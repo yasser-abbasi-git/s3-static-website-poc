@@ -27,13 +27,13 @@ module "acm" {
   }
 
   depends_on = [
-    module.route53.app_hosted_zone
+    module.route53.hosted_zone
   ]
 }
 
 # create hosted zone and dns records
 module "route53" {
-  source                     = "github.com/yasser-abbasi-git/tfmodule-hostedzone-and-dns"
+  source                     = "github.com/yasser-abbasi-git/tfmodule-hostedzone-and-dns?ref=v1.1"
   root_domain                = var.root_domain
   hosted_zone_domain         = local.app_hosted_zone_domain
   hosted_zone_name           = var.app_hosted_zone_name
