@@ -66,6 +66,7 @@
                 "lambda:RemovePermission",
                 "lambda:GetPolicy",
                 "iam:PassRole",
+                "iam:CreatePolicy",
                 "iam:GetPolicy",
                 "iam:GetPolicyVersion",
                 "iam:ListPolicyVersions",
