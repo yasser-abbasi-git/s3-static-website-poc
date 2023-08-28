@@ -1,6 +1,7 @@
 # Create bucket for the static website
 resource "aws_s3_bucket" "website" {
   bucket = var.bucket_name
+  force_destroy = true
   tags = {
     Name = "${var.project_name}-bucket"
   }
